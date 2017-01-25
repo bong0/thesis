@@ -2,9 +2,11 @@
 
 Eine LaTeX Vorlage und Dokumentation zum Schreiben einer Abschlussarbeit.
 
+Diese Infos habe ich im Rahmen meiner Bachelorarbeit an der Hochschule Darmstadt Fachbereich Informatik (https://fbi.h-da.de) zusammengetragen, darauf ist entsprechend auch die Vorlage zugeschnitten. 
+
 Falls dir Code oder Dokumentation weiter geholfen haben, mentioned mich mal auf Twitter (@bong0) oder macht ein Sternchen ans Repo :)
 
-Keywords: Abschlussarbeit, Bachelorarbeit, Masterarbeit, Bachelor Thesis, Master Thesis 
+Keywords: Abschlussarbeit, Bachelorarbeit, Masterarbeit, Bachelor Thesis, Master Thesis
 
 # Arbeitsweise und Fragen
 ## Arbeit
@@ -38,17 +40,29 @@ Fragen A-D beantworten
   * Verwandte Arbeiten
   * Zusammenfassung und Ausblick (Was ist noch zu tun)
 
+# Literaturquellen/-recherche
+Für Informatik:
+
+  * ieeexplore
+  * dl.acm.org
+  * link.springer.com
+  * Science direct
+  * wiley
+  * Jstor
+
+## Download
+Falls euer Uni-VPN nicht funktioniert, weil sich keiner drum kümmert es ganz zu machen könnt ihr auch sci-hub benutzen. Das ist wenigstens zuverlässig.
 
 # LaTeX Hinweise und wichtige commands
 Dies ist keine Einführung in LaTeX und setzt voraus, dass du bereits weißt wie du dein Dokument strukturierst und bei meinem Setup abschauen kannst.
 Die folgenden Sektionen sind lediglich hinweise um dir etwas Arbeit zu ersparen welche Kommandos du für was nehmen willst und sind dann ohne weiteres funktionsfähig wenn das Rahmenwerk beibehalten wird.
 
-### Cite
+## Cite
     \cite[S. 45]{book:crypto}
-	
+
 ** Die RFCs sind direkt mit der rfc.bib eingebunden.** Das script `rfcshorthand.awk` verändert die Datei `rfc.bib` von http://tm.uka.de/~bless/bibrfcindex.html so, dass z.B. RFC4880 als [RFC4880] erscheint wird, und nicht mit dem Autorenkürzel.
 
-### Referenzierung
+## Referenzierung
     \smartref
     \vref
 
@@ -60,7 +74,7 @@ Die folgenden Sektionen sind lediglich hinweise um dir etwas Arbeit zu ersparen 
     das hier ist eingerückt
     \end{adjustwidth}
 
-### Grafiken
+## Grafiken
 
 ```
 \begin{minipage}[c]{\textwidth}
@@ -79,7 +93,7 @@ Die folgenden Sektionen sind lediglich hinweise um dir etwas Arbeit zu ersparen 
 \end{figure}
 ```
 
-### Listings
+## Listings
 
 ```
 \begin{minipage}[t]{\textwidth}
@@ -88,12 +102,12 @@ Die folgenden Sektionen sind lediglich hinweise um dir etwas Arbeit zu ersparen 
 \end{minipage}
 ```
 
-### Glossar/Abkürzungen
+## Glossar/Abkürzungen
 
-  * `\acrfull{WoT}` zeigt den Erklärungstext zu einem Glossareintrag (Web of Trust im Beispiel). 
+  * `\acrfull{WoT}` zeigt den Erklärungstext zu einem Glossareintrag (Web of Trust im Beispiel).
   * `\gls{WoT}` zeigt den Erklärungstext nur das erste Mal wenn, danach nur die Abkürzung
 
-### Verb/Hervorheben
+## Verb/Hervorheben
 Es gibt zwei gute Möglichkeiten z.B. Text als Shellkommando hervorzuheben:
 
 Ersteres hat die angenehme Eigenschaft dass man auch darf `_` ohne escaping schreiben kann.
@@ -104,7 +118,7 @@ Die zweite Methode ergibt visuell das selbe, und kann dann genommen werden wenn 
 
     \texttt{Text hier}
 
-### Fußnoten
+## Fußnoten
 Einfach normal mit \footnote
 
 ### Zitatblock
@@ -115,10 +129,10 @@ Sehr simpel mit
     \begin{quotation}
 
 
-### Boxes
+## Boxes
 Mit Hintergrund, blau: `\quickbox`
 
-### Blockkommentare
+## Blockkommentare
 
   \iffalse
     Das Auskommentierte hier
@@ -130,18 +144,24 @@ Mit Hintergrund, blau: `\quickbox`
     "`In Deutschen Anführungszeichen"'
 ```
 
-## Diagramme/Zeichnungen
+# Diagramme/Zeichnungen
 **Nicht mit powerpoint** sondern z.B. draw.io - gibt auch eine chrome extension dazu welche ohne Herunterladen-Dialog lokal speichern kann.
 png export online unter Export => Erweitert => Tansparent Background => Breite mind. 2048px (Ihr bereut es sonst bei high-dpi Drucken später)
 
 Visual Paradigm für OSX/MacOS ist gut zum Zeichnen von UML Diagrammen (ERD z.B. oder Klassendiagramme).
 
-### draw.io Troubleshooting
+## draw.io Troubleshooting
 Falls ihr abgeschnittene Cliparts oder ähnliches seht: Macht das Objekt wenige Pixel größer, dann rendert
 
 Falls ihr Verschiebungen seht die nicht beim Zeichnen waren: Nehmt ein vielfaches von eurer Grafikbreite beim export, nichts willkürliches. (z.B. 1210 bei 605px ursprünglich)
 
-## Präsentation
+## Icon/Clipart Quellen
+
+https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
+https://commons.wikimedia.org/wiki/Crystal_Clear
+https://openclipart.org/
+
+# Präsentation
 // FIXME
 
 # Druck
