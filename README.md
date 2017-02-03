@@ -162,9 +162,9 @@ Falls ihr Verschiebungen seht die nicht beim Zeichnen waren: Nehmt ein vielfache
 
 ## Icon/Clipart Quellen
 
-https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
-https://commons.wikimedia.org/wiki/Crystal_Clear
-https://openclipart.org/
+  * https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
+  * https://commons.wikimedia.org/wiki/Crystal_Clear
+  * https://openclipart.org/
 
 # Präsentation
 // FIXME
