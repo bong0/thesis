@@ -51,7 +51,7 @@ Für Informatik:
   * Jstor
 
 ## Download
-Falls euer Uni-VPN nicht funktioniert, weil sich keiner drum kümmert es ganz zu machen könnt ihr auch sci-hub benutzen. Das ist wenigstens zuverlässig.
+Falls euer Uni-VPN nicht (gut genug) funktioniert, könnt ihr auch sci-hub benutzen.
 
 # Review
 Fragt (genug!) Freunde ob sie über eure Arbeit drüberschauen könnten, lockt sie mit Geschenken! Der/Die eine oder andere lässt es vermutlich liegen, schafft es nicht etc.
