@@ -53,6 +53,11 @@ Für Informatik:
 ## Download
 Falls euer Uni-VPN nicht funktioniert, weil sich keiner drum kümmert es ganz zu machen könnt ihr auch sci-hub benutzen. Das ist wenigstens zuverlässig.
 
+# Review
+Fragt (genug!) Freunde ob sie über eure Arbeit drüberschauen könnten, lockt sie mit Geschenken! Der/Die eine oder andere lässt es vermutlich liegen, schafft es nicht etc.
+
+Wenn Feedback kommt: Seht es als Anregung, ihr habt trotzdem die Hoheit über Eure Arbeit! **Nicht verrückt machen lassen**
+
 # LaTeX Hinweise und wichtige commands
 Dies ist keine Einführung in LaTeX und setzt voraus, dass du bereits weißt wie du dein Dokument strukturierst und bei meinem Setup abschauen kannst.
 Die folgenden Sektionen sind lediglich hinweise um dir etwas Arbeit zu ersparen welche Kommandos du für was nehmen willst und sind dann ohne weiteres funktionsfähig wenn das Rahmenwerk beibehalten wird.
@@ -157,9 +162,9 @@ Falls ihr Verschiebungen seht die nicht beim Zeichnen waren: Nehmt ein vielfache
 
 ## Icon/Clipart Quellen
 
-https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
-https://commons.wikimedia.org/wiki/Crystal_Clear
-https://openclipart.org/
+  * https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
+  * https://commons.wikimedia.org/wiki/Crystal_Clear
+  * https://openclipart.org/
 
 # Präsentation
 // FIXME
