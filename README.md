@@ -1,4 +1,4 @@
-# Bachelor LaTeX Pack
+# Thesis Pack mit Latex
 
 Eine LaTeX Vorlage und Dokumentation zum Schreiben einer Abschlussarbeit.
 
