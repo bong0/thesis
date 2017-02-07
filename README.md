@@ -54,7 +54,7 @@ Für Informatik:
 Falls euer Uni-VPN nicht (gut genug) funktioniert, könnt ihr auch sci-hub benutzen.
 
 # Review
-Fragt (genug!) Freunde ob sie über eure Arbeit drüberschauen könnten, lockt sie mit Geschenken! Der/Die eine oder andere lässt es vermutlich liegen, schafft es nicht etc.
+Fragt (genügend!) Freunde, ob sie über eure Arbeit drüberschauen könnten, lockt sie mit Geschenken! Der/Die eine oder andere lässt es vermutlich liegen, schafft es nicht etc.
 
 Wenn Feedback kommt: Seht es als Anregung, ihr habt trotzdem die Hoheit über Eure Arbeit! **Nicht verrückt machen lassen**
 
