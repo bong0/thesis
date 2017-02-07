@@ -1,0 +1,104 @@
+% !TeX spellcheck = de_DE
+
+\chapter{Arbeitstitel-oder -thema (Lösung)}\label{loesung}
+In diesem Kapitel wird die eigene Arbeit beschrieben, ein Konzept, Implementierung, Messergebnisse oder ähnliches.
+
+\begin{formal}
+	"`Sonderzeichen"' im Math-mode:\\
+	$L\ddot{a}nge_{signatur} <= N$
+\end{formal}
+
+
+
+\begin{formal}
+	Zentrieren eines Texts
+\end{formal}
+Eine typische UID sieht wie folgt aus:
+\begin{center}
+	\verb|Max Mustermann (beruflich) <mm@example.com>|
+\end{center}
+
+
+\begin{formal}
+	Eine einfache Tabelle mit hervorgehobenen Boxen
+\end{formal}
+\begin{minipage}{\textwidth}
+	\captionof{table}{Akzeptierte Reihenfolgen der Namensbestandteile einer UID}\label{accepted-namecombinations}
+	\begin{tabular}{|l|c|l|l|c|}
+		\toprule
+		& &&& \textbf{Beispiel} \\
+		\midrule
+			\textbf{1} & \quickbox{Titel} &  \quickbox{Vornamen} &  \quickbox{Nachnamen}& Dr. Max Baum\\	
+		\hline
+			\textbf{2} & \quickbox{Titel} &  \quickbox{Nachnamen} &  \quickbox{Vornamen} &Dr. h. c. Ban Ki-moon\\		
+		\hline
+				\textbf{3} & & \quickbox{Vornamen} & \quickbox{Nachnamen}&Max Baum\\
+		\hline
+				\textbf{4} &  & \quickbox{Nachnamen} & \quickbox{Vornamen}&Ban Ki-moon\\
+		\hline
+				\textbf{5} &  & \quickbox{Nachnamen}\quickbox{,} & \quickbox{Vornamen}&Baum, Max \\
+		\bottomrule
+	\end{tabular}
+\end{minipage}
+
+
+
+\subsubsection{Kryptographische- und Sicherheits-Eigenschaften}
+
+\begin{formal}
+	Wörtliches Zitieren, zweisprachig
+\end{formal}
+\begin{quotation}
+"`OpenPGP implementations MUST create keys with version 4 format. V3 keys are deprecated;"'~\cite[S.40]{rfc4880}\\
+Deutsch:~\emph{OpenPGP Implementierungen müssen [zwingend] Schlüssel im Format der Version 4 erzeugen. Schlüssel der Version 3 sind veraltet;}
+\end{quotation}
+
+
+
+\begin{formal}
+	Eine Description, genutzt zum Auflisten einer key-value Liste mit hervorgehobenem key 
+\end{formal}
+\begin{description}
+	\item[OK]\hfill\\\verb|Prof. Dr. Frank Emil Schuster <fes@example.com>|
+	\item[OK] Kein Titel\\\verb|Frank Emil Schuster <fes@example.com>|
+	\item[Fehler] Unvollständiger Vorname\\\verb|Prof. Dr. Frank Schuster <fes@example.com>|
+	\item[Fehler] Falsche E-Mail-Adresse\\\verb|Prof. Dr. Frank Emil Schuster <NOBODY@example.com>|
+	\item[OK] Kommentare werden gefiltert\\\verb|(foo)Frank Emil Schu()ster (foo) <fes@exampl(foo)e.com>|
+\end{description}
+
+\begin{formal}
+	Eine Description, mit minimierten Zeilenzwischenräumen
+\end{formal}
+\begin{description}[noitemsep]
+	\item[$\approx$ 3s] Authentifikation und Stellung des Zertifizierungsauftrags
+	\item[$\approx$ 2s bis 48s] Warten auf CA und XML-Austausch
+	\item[$\approx$ 300ms] Herunterladen des Zertifikats und Senden eines Sperrauftrags
+\end{description}
+
+
+
+\clearpage
+\begin{formal}
+	Eine Komplexe, mehrzeilige Tabelle
+\end{formal}
+\begin{minipage}{\textwidth}
+	%	\renewcommand{\arraystretch}{1.3}
+	\captionof{table}{Überblick über Optionen der Publikation von Zertifikatsdaten} \label{publikationsfaelle} 
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\multirow{2}{*}{\textbf{Option}} & \multirow{2}{*}{\textbf{Verteilung}} & \multirow{2}{*}{\addstackgap{\shortstack{\textbf{Umfang} \\ \textbf{veröffentlichter Daten}}}}\footnote{Hervorgehobene Box steht für \quickbox{OpenPGP-Paket}} & \multirow{2}{*}{\textbf{Auffindbarkeit}}\\
+		&&&\\
+		\hline
+		1 & Manuell & Keine & Keine\footnote{solange keine Sperrung vorliegt} \\
+		\hline
+		\multirow{3}{*}{2} & \multirow{3}{*}{Keyserver} & \multirow{3}{*}{\addstackgap{\shortstack{ \quickbox{Public-Key-Material}\\ \quickbox{(PGPCA-)Signatur}}}} & \multirow{3}{*}{per Key-ID\footnote{keine Preisgabe von personenbezogenen Daten}} \\
+		&&&\\
+		&&&\\
+		\hline
+		\multirow{3}{*}{3} & \multirow{3}{*}{Keyserver} & \multirow{3}{*}{\addstackgap{\shortstack{\quickbox{Public-Key-Material} \\ \quickbox{User-ID + Selbst-Signatur} \\ \quickbox{(PGPCA-)Signatur}}}} & per Key-ID, \\
+		&&&E-Mail Adresse,\\
+		&&&Namen\\
+		&&&\\
+		\hline
+	\end{tabular}
+\end{minipage}

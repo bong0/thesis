@@ -1,0 +1,578 @@
+\newif\ifkoma
+
+%\usepackage[german]{fancyref} not used atm
+
+
+\makeatletter
+\@ifclassloaded{scrartcl}{\komatrue}{\komafalse}
+\makeatother
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Das wird in neueren Versionen von Pandoc benutzt:
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Stellt \euro zur Verfügung:
+\usepackage{eurosym} 
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+    % Die 6 Vista-Fonts:
+    %   1. Calibri:       Serifenlos, Ersatz für Verdana (war Ersatz für Arial)
+    %   2. Cambria:       Ersatz für Times New Roman
+    %   3. Candara:       (für informelle Schriftstücke)
+    %   4. Consolas:      Nicht-Proportional-Schrift für Quelltexte
+    %   5. Constantia:    Für Fließtexte für Print- und elektronische Medien
+    %   6. Corbel:        Serifenlos, für die Bildschirmdarstellung, enthält Mediävalziffern
+    \setsansfont{Calibri}
+    \setromanfont{Cambria}
+    %\setromanfont{Constantia}
+    \setmonofont{Consolas}
+  \else
+    \usepackage[utf8]{inputenc}
+    % UTF-8-Zeichen, die direkt im TeX-Quelltext stehen dürfen
+    % --------------------------------------------------------
+    % Doppelte Dollar-Zeichen für die math-Umgebung sind notwendig, wegen des
+    % Pandoc-Expansionsmechanismus für Variablen.
+    % Die Liste der Unicode-Zeichen, die über die Tastatur erreichbar sind,
+    % findet man hier: 
+    %   <url:/usr/share/X11/locale/en_US.UTF-8/Compose>
+    % Der Compose-Key (= Multi_Key) ist ROLLEN (bei mh, einstellbar über
+    % KDE-Einsgtellungen). 
+    % Man drückt den Compose-Key, lässt ihn los und tippt dann zwei weitere
+    % Zeichen ein.
+    
+    % €  Unicode Character 'EURO SIGN' (U+20AC), UTF-8 = E2 82 AC 
+    % <url:http://www.fileformat.info/info/unicode/char/20aC/index.htm>
+    \DeclareUnicodeCharacter{20AC}{\euro}
+
+    % €  Unicode Character 'SECTION SIGN' (U+00A7), UTF-8 = c2 a7 (Paragraphenzeichen)
+    \DeclareUnicodeCharacter{C2A7}{\S}
+
+    % ←  Unicode Character 'LEFTWARDS ARROW' (U+2190),UTF-8 = E2 86 90, Compose< -  
+    % vgl. <url:http://www.fileformat.info/info/unicode/char/2190/index.htm>
+    \DeclareUnicodeCharacter{2190}{\mbox{$\leftarrow$}}
+
+    % →  Unicode Character 'RIGHTWARDS ARROW' (U+2192), UTF-8 = E2 86 92, Compose- >:
+    % (Das Zeichen wird in einigen Fonts wie ein Minus-Zeichen dargestellt. Das
+    % ist ein Fehler im Font, der Zeichencode wird korrekt gebildet.)
+    % vgl. <url:http://www.fileformat.info/info/unicode/char/2192/index.htm>
+    \DeclareUnicodeCharacter{2192}{\mbox{$\rightarrow$}}
+
+    %\usepackage{pxfonts}       % Palatino-likes fonts for TeX (breiter)
+    %\usepackage{txfonts}        % Times-likes font for TeX (schmaler als Palatino) Julian disabled
+    %\usepackage{lmodern}       % latin modern fonts
+  \fi
+\fi
+
+
+\ifkoma
+	%% Das ist ungetestet (2015-08-15):
+	% Das ist der Font für "Abbildung 2":
+	\addtokomafont{captionlabel}{\bfseries\small}
+	% Das ist der Font für die eigentliche Beschreibung:
+	\addtokomafont{caption}{\itshape\small}
+	% Beschreibung nicht hängend unter Label setzen:
+	\setcapindent{0em}
+	% Das erzeugt »Abbildung 2.«, anstelle von »Abbildung 2:«.
+	\renewcommand*{\captionformat}{.\ }
+\fi
+
+% if(tables)
+\usepackage{ctable}
+\usepackage{float} % provides the H option for float placement
+% end(tables)
+
+% if(url)
+\usepackage[hyphens]{url}
+% end(url)
+
+%Funktioniert nicht gut:
+% \renewcommand{\texttt}[1]{\color{red}#1\color{black}}
+
+% Hier kommt z.B. Code von Pygments (automatisch):
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Additions 
+% define fbox border (for framing images e.g.)
+\setlength\fboxrule{0.5pt}
+
+\usepackage{subcaption}
+\usepackage{float}
+%\usepackage{subfig}
+
+\makeatletter
+\def\figcaption{%
+	\refstepcounter{figure}%
+	\@dblarg{\@caption{figure}}}
+\makeatother
+
+
+%\pagestyle{scrheadings}
+%\usepackage[pdfspacing]{classicthesis}
+
+\usepackage{enumitem}
+
+%\clearscrheadfoot
+%\ohead{\rightmark}
+%\cfoot[\pagemark]{\pagemark}
+
+\usepackage{translator} % macht aus "Acronyms" Akronyme
+\deftranslation[to=German]{Acronyms}{Akronyme}
+
+%Glossar, Abkürzungsverzeichnis, Symbolverzeichnis
+\usepackage[nonumberlist, acronym, nomain, style=long]{glossaries}
+%Glossar-Befehle anschalten
+\makeglossaries
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+	
+%Diese Befehle sortieren die Einträge in den
+%einzelnen Listen:
+%makeindex -s datei.ist -t datei.alg -o datei.acr datei.acn
+%makeindex -s datei.ist -t datei.glg -o datei.gls datei.glo
+%makeindex -s datei.ist -t datei.slg -o datei.syi datei.syg
+
+\newcommand*{\myglossaryindent}{0cm}
+
+\newglossarystyle{longwithindent}{%
+	\glossarystyle{long}%
+	\renewenvironment{theglossary}%
+	{\begin{longtable}[l]{@{\hspace{\myglossaryindent}}lp{\glsdescwidth}lp{\glspagelistwidth}@{}}}%
+		{\end{longtable}}%
+} 
+
+\input{acronyms}
+
+
+%\usepackage[square,sort,comma,numbers]{natbib}
+
+\usepackage[backend=biber,style=alphabetic,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+\DefineBibliographyStrings{ngerman}{%
+	urlseen={zuletzt besucht am:}% %%% not `visited on'
+}
+\setcounter{biburllcpenalty}{1000} % Zeilenumbrüche in Url bei jedem belibigen Buchstaben 
+
+\usepackage[nameinlink]{cleveref}
+\usepackage{nameref}
+
+% Store \vref in a variable to enable redefining itself.
+% Redefine \vref so the hyperlink is extended to the entire
+% reference.
+\let\vrefpointer\vref
+\renewcommand{\vref}[1]{%
+	\hyperref[#1]{\vrefpointer{#1}}%
+}
+
+% A custom command \smartref with the hyperlink extended to 
+% the entire reference. 
+% Plus some grammatic sugar (quote marks and comma)
+\newcommand{\smartref}[1]{%
+	\hyperref[#1]{\cref{#1}, \glqq\nameref{#1}\grqq, \vpageref{#1}}%
+}
+
+% define cref listings since its version is too old
+\crefname{lstlisting}{}{} % if you fill "listing" and "listings" in there the noun will be doubled, to clear it...
+\Crefname{lstlisting}{Listing}{Listings}
+
+%%% fullref is evil! pages off, use vref
+
+%fix for bug in biblatex http://tex.stackexchange.com/a/311428
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
+
+\usepackage[autostyle]{csquotes}  
+
+%Quellcode
+\usepackage{listingsutf8}
+
+%\usepackage[round, sort, compress, authoryear]{natbib}
+
+%\usepackage[%
+%style=ieee,%
+%%   style=numeric,
+%isbn=true,%
+%doi=false,%
+%sorting=none,%
+%url=true,%
+%defernumbers=true,%
+%bibencoding=utf8,%
+%backend=biber%
+%]{biblatex}
+
+%Den Punkt am Ende jeder Beschreibung deaktivieren
+\renewcommand*{\glspostdescription}{}
+
+%%%%%%%%%%%%%%%%%%%% Quelltext Element - Style-File %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[varqu]{zi4}
+\definecolor{eclipse-red}{RGB}{127,0,85}
+\definecolor{eclipse-blue}{RGB}{0,0,192} %for fields
+\definecolor{eclipse-strings}{RGB}{42,0,255}
+\definecolor{eclipse-green}{RGB}{63,127,95}
+\definecolor{eclipse-lightblue}{RGB}{127,159,191} %for Javadoc Tags
+\definecolor{eclipse-gray}{RGB}{100,100,100} %for annotations
+\definecolor{eclipse-JavadocHTML}{RGB}{127,127,159} %for Javadoc HTML
+\definecolor{eclipse-JavadocLinks}{RGB}{63,63,191}
+\definecolor{eclipse-Javadoc}{RGB}{63,95,191}
+\lstdefinestyle{eclipse-java}{%
+	basicstyle=\ttfamily\small,%\fontfamily{zi4}\fontsize{10pt}{10pt}\selectfont,%
+	tabsize=2,%
+	breakautoindent=true,%
+	breaklines,%
+	postbreak=\space\space\space,%
+	breakindent=0pt,%
+	keywordstyle=\color{eclipse-red}\bfseries,%
+	stringstyle=\color{eclipse-strings},%
+	commentstyle=\color{eclipse-green},
+	showstringspaces=false,
+	morecomment=*[s][\color{eclipse-Javadoc}]{/**}{*/},
+	morecomment=*[l][commentstyle]{//},
+	language=Java,morekeywords={enum},
+	emph={field,field2},emphstyle={\color{eclipse-blue}},
+	emph=[2]{RED,GREEN,BLUE,staticField,inheritedField},emphstyle=[2]{\color{eclipse-blue}\itshape},
+	emph=[3]{staticMethod},emphstyle=[3]\itshape,
+	emph={[4]TASK},emphstyle={[4]\color{eclipse-lightblue}\bfseries},
+	alsoletter={@},
+	emph=[5]{@author,@deprecated},emphstyle=[5]{\color{eclipse-lightblue}\bfseries},
+	moredelim=[l][\color{eclipse-gray}]{@},
+	moredelim=*[s][\color{eclipse-Javadoc}]{/**}{*/},
+	moredelim=[s][\color{eclipse-JavadocLinks}]{@link}{*},
+	extendedchars=true,%
+	literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1 {ü}{{\"u}}1
+	{ä}{{\"a}}1 {ö}{{\"o}}1}
+
+\lstset{
+	breakatwhitespace=false,
+	breaklines=true,
+	frame=single,
+	numbers=left,
+	escapeinside={(*}{*)},
+	basicstyle=\footnotesize\ttfamily,
+	deletekeywords={this},
+%	columns=fixed
+}
+
+
+\newcommand\highlight[1]{\colorbox{yellow}{#1}}
+
+
+%%% BEGIN grey formal cite block
+% for adjustwidth environment
+\usepackage[strict]{changepage}
+
+% for formal definitions
+\usepackage{framed}
+
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{formalshade}{rgb}{0.95,0.95,1}
+
+\newenvironment{formal}{%
+	\def\FrameCommand{%
+		\hspace{1pt}%
+		{\color{DarkBlue}\vrule width 2pt}%
+		{\color{formalshade}\vrule width 4pt}%
+		\colorbox{formalshade}%
+	}%
+	\MakeFramed{\advance\hsize-\width\FrameRestore}%
+	\noindent\hspace{-4.55pt}% disable indenting first paragraph
+	\begin{adjustwidth}{}{7pt}%
+		\vspace{2pt}\vspace{2pt}%
+	}
+	{%
+		\vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+%%%% END grey formal cite block
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Die Variable 'cs' wird offensichtlich von pandoc gesetzt, wenn Bilder
+% eingebunden werden.
+% In diesem Fall wird das Macro '\includegraphics' umdefiniert, um festzulegen,
+% dass alle Bilder auf die Seitenbreite vergrößert/verkleinert werden. 
+\usepackage{graphicx}
+
+\let\Oldincludegraphics\includegraphics
+% \let\includegraphicsoriginal\includegraphics
+% if(graphics)
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=1.0\maxwidth]{#1}}
+% end(pictures)
+% \begin{figure} .. \end{figure} wird umdefiniert,
+% um Bilder immer vor Ort einzufügen, nicht als gleitende Objekte.
+\let\Oldfigure=\figure
+\def\figure[#1]{\Oldfigure[h!]}
+% end(graphics)
+
+%\hypersetup{breaklinks=true, bookmarks=true}
+            
+%\hypersetup{breaklinks=true, pdf={0 0 0}, urlcolor=blue}
+            % Das unterdrückt den Rahmen um Links,  
+            % indem die Farbe auf weiß gesetzt wird:
+            % allbordercolors=1 1 1,
+            % urlbordercolor=1 1 1,
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+
+% end(lang)
+
+% for(header-includes)
+% end(header-includes)
+
+
+% --------------------------------------------
+% Es folgt eine Kopie von colab.sty mit Kommandos
+% zur Unterstützung des colab-Filters.
+% Die Kommandos werden unterdrückt, wenn eine Datei `mycolab.sty` im 
+% aktuellen Verzeichnis vorhanden ist.
+% Es ist zu beachten, dass in Pandoc auf ein Dollarzeichen ein Buchstabe folgen muss.
+% Ein Mathematikbefehl wie Dollar \Box Dollar führt daher zu einem Fehler.
+% Man verhindert ihn, indem man in TeX \( .. \) statt Dollar .. Dollar schreibt.
+
+% Innerhalb einer \IfFileExists-Anweisung darf man offensichtlich keine
+% Kommandows mit #1 definieren. Daher wird ein neues Boolean eingeführt,
+% innerhalb dessen alles erlaubt ist.
+%\newif\ifmycolabExists
+%\IfFileExists{./mycolab.sty}{\mycolabExiststrue}{\mycolabExistsfalse}
+
+%\ifmycolabExists
+%  \input{./mycolab.sty}
+
+  % mdframed hat Probleme mit dem Seitenumbruch (2016-01-31).
+  %\usepackage[framemethod=default]{mdframed} 
+  \usepackage{tcolorbox} 
+
+  \definecolor{lightyellow}{rgb}{1,1,.5} 
+  \DefineNamedColor{named}{ForestGreen}{cmyk}{0.91,0,0.88,0.12}
+
+  % 1. Inline-Kommentare (~~ ... ~~):
+  \newcommand{\inlinecomment}[1]{{\textsf{\color{black}\colorbox{lightyellow}{\(\langle\)#1\(\rangle\)}}}}
+
+  % 2. Lange Kommentare (<div class="comment"> ... </div>):
+  %
+  % Das Environment comment wird im Paket verbatim.sty definiert,
+  % welches von tcolorbox.sty importiert wird,
+  % daher kann die Klasse comment nicht auf das gleichnamige Environment
+  % abgebildet werden.
+  %
+  % Das funktioniert mit dem Paket mdframed.
+  %\newmdenv[roundcorner=5pt,backgroundcolor=lightyellow]{comment}
+  % Das funktioniert mit dem Paket tcolorbox:
+  \renewenvironment{comment}{\begin{tcolorbox}[colback=lightyellow]}{\end{tcolorbox}}
+
+  % 3. Todo (<div class="todo"> ... </div>):
+  \newenvironment{todo}{%
+  \par
+  \makebox[0cm][r]{\textbf{\textcolor{red}{TODO~}}}%
+  \small}{\textcolor{red}{\(\Box\)}\par}
+
+  % 4.Done (<div class="done"> ... </div>):
+  \newenvironment{done}{%
+  \par
+  \makebox[0cm][r]{\textbf{\textcolor{ForestGreen}{DONE~}}}%
+  \small}{\textcolor{ForestGreen}{\(\Box\)}\par}
+%\fi
+
+% Ende von colab.sty.
+% --------------------------------------------
+
+% Um Linien am Rand zur Erkennung von Zitaten zu erzeugen:
+% \usepackage{changebar}  
+% \changebarsep-5mm
+
+% ipad beachten:
+%     Die Variable ipad wird z.B. von dem Script
+%     <url:/home/herfert/p/herfert/s/lang/zsh/pandoc2pdf-for-vim.zsh>
+%     gesetzt, falls im Verzeichnis des pandoc-Dokuments eine Datei
+%     ipadyes (beliebigen Inhalts) existiert.
+
+\usepackage{longtable}
+\ifkoma
+	\usepackage[automark]{scrpage2}
+\fi
+
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\renewcommand*{\arraystretch}{1.2}%
+
+%\usepackage{boolexpr,pdftexcmds,trace}
+%\usepackage{boolexpr}
+
+
+
+% Das soll für gute Trennungen sorgen und den Einsatz von
+% \sloppy  überflüssig machen.
+% Vorteil gegenüber 
+%   \slopyy (= lockerer Umgang mit Trennungen)
+%  und
+%   \fussy (= penibler Umgang mit Trennungen):
+% Die  Version unten arbeitet harmonischer, reist weniger Löcher in das Druckbild. 
+% Quelle: <url:http://www.dante.de/CTAN/info/german/l2tabu/l2tabu.pdf>
+% lokal:  <url:file:///usr/share/doc/texlive-doc-de/german/l2tabu/l2tabu.pdf>
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
+ 
+
+% Quelle für String-Vergleich:
+%   <url:http://tex.stackexchange.com/questions/29133/how-to-create-switch-structure-comparing-strings-in-latex>
+\long\def\isequal#1#2{\pdfstrcmp{#1}{#2}}
+
+\ifkoma
+% Abschnittsbezeichnung im Seitenkopf:
+\pagestyle{scrheadings}
+
+% Addition : force right-only pagenumbers
+\clearscrheadfoot
+\ohead{\raggedleft\rightmark}
+\cfoot[\pagemark]{\raggedleft\pagemark}
+%% end addition
+\fi
+
+% Hyperlinks sollen immer als Fußnoten gedruckt werden, damit alle Informationen
+% auch im gedruckten Text vorhanden sind:
+%\newcommand{\originalhrefcommand}{}
+%\let\originalhrefcommand=\href
+%\renewcommand{\href}[2]{%
+%\originalhrefcommand{#1}{#2}%
+%\footnote{\url{#1}}%
+%}
+
+
+% Wenn man eine Nummerierung des Literaturverzeichnisses vermeiden will,
+% benutzt man: 
+% # Literatur {.unnumbered}
+% oder das äquivalente
+% # Literatur {-}
+
+% Nach \LaTeX soll ein expliziter Leerraum erzeugt werden,
+% erspart \LaTeX{}.
+\let\origLaTeX=\LaTeX
+\renewcommand{\LaTeX}{\origLaTeX~}
+
+
+\usepackage{soul} % for strikethrough
+
+% my@and sieht nach, ob nach my@and noch ein Autor folgt.
+% Falls ja, wird es zu \and expandiert.
+% Falls ein, wird es zu nichts expandiert.
+\usepackage{ifthen,xifthen}
+\makeatletter
+\newlength{\m@length}
+
+\def\my@and#1{%
+\settowidth{\m@length}{#1}%
+\ifthenelse{\lengthtest{\m@length = 0pt}}{}{\and #1}%
+}
+
+% Angabe mehrerer Autoren mit yaml:
+% author:
+% - Luke Skywalker
+% - Darth Vader
+% Das Problem mit der for-Schleife ist, 
+% dass am Ende ein my@and übrigbleibt,
+% das erkennen muss, dass es eigentlich nicht gebraucht wird.
+\makeatother
+
+
+% Erzeugt a), b) usw. für Aufzählungen der Stufe 2:
+% (funktioniert nicht, weil Labels im .pan explizit angegeben werden.)
+%\renewcommand{\labelenumii}{\alph{enumii})}
+
+% Trennungen haben eigentlich wenig mit dem Pandoc-Stil zu tun,
+% aber das ist ein pragmatischer Ort.
+\hyphenation{Omni-Cloud}
+
+% Eine Environment-Definition wie \begin{quote} .. \end{quote}
+% wird intern in die Befehle
+%  \quote und \endquote
+% übersetzt. Diese beiden muss man mit \let retten,
+% um später auf sie zugreifen zu können.
+%
+% Vermutlich sind die \newcommand nur notwendig,
+% um Doppeldefinition zu entdecken.
+\newcommand{\origquote}{}
+\newcommand{\origendquote}{}
+\let\origquote=\quote
+\let\origendquote=\endquote
+\renewenvironment{quote}%
+{\origquote\itshape}%
+{\origendquote}
+
+%{\cbstart\origquote\itshape}%
+%{\origendquote\cbend}
+
+
+%\setlength{\textheight}{22cm}
+
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+
+% reconfigure representation of chapters (space befor and after)
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{18pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-50pt}{5pt}
+
+\newcommand{\centereddots}{\noindent\makebox[\linewidth-1em][c]{\textbf{…}}}
+
+% Tabellen
+\usepackage{multirow}
+\usepackage[usestackEOL]{stackengine}
+\usepackage{tabularx}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tablefootnote}
+
+\vrefwarning
+
+% define round box around text
+\usepackage{tcolorbox}
+\definecolor{bluegrey}{rgb}{0.122, 0.435, 0.698}
+\newtcbox{\quickbox}{nobeforeafter,colframe=bluegrey,colback=bluegrey!10!white,boxrule=0.5pt,arc=4pt,boxsep=0pt,left=3pt,right=3pt,top=3pt,bottom=3pt,tcbox raise base}
+
+
+% define listing for varioref since it doesn't recognize it else
+\AtBeginDocument{\labelformat{lstlisting}{Listing~#1}}
+
+
+%This removes the space between 2 chapters only when they are just next to each other.
+% from http://tex.stackexchange.com/a/89774/93829
+\usepackage[titles]{tocloft}
+\makeatletter
+\newskip\old@cftbeforechapskip
+\old@cftbeforechapskip\cftbeforechapskip
+\let\old@l@chapter\l@chapter
+\let\old@l@section\l@section
+\def\l@chapter#1#2{\old@l@chapter{#1}{#2}\cftbeforechapskip3pt}% set your value here
+\def\l@section#1#2{\old@l@section{#1}{#2}\cftbeforechapskip\old@cftbeforechapskip}
+\makeatother
+
+\usepackage{changepage} % for indented  text
