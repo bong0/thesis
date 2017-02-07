@@ -65,7 +65,7 @@ Die folgenden Sektionen sind lediglich hinweise um dir etwas Arbeit zu ersparen 
 ## Cite
     \cite[S. 45]{book:crypto}
 
-** Die RFCs sind direkt mit der rfc.bib eingebunden.** Das script `rfcshorthand.awk` verändert die Datei `rfc.bib` von http://tm.uka.de/~bless/bibrfcindex.html so, dass z.B. RFC4880 als [RFC4880] erscheint wird, und nicht mit dem Autorenkürzel.
+**Die RFCs sind direkt mit der rfc.bib eingebunden.** Das script `rfcshorthand.awk` verändert die Datei `rfc.bib` von http://tm.uka.de/~bless/bibrfcindex.html so, dass z.B. RFC4880 als [RFC4880] erscheint wird, und nicht mit dem Autorenkürzel.
 
 ## Referenzierung
     \smartref
@@ -176,7 +176,7 @@ In Darmstadt/online:
   * https://www.wir-machen-druck.de/
   * WatzeDruck (nur offline) + seDruck (5% online Rabatt bei Selbstabholung)
 
-Letzteres war meine gewählte Option: 26.69€ Summa sumarum pro Exemplar mit Leder Hardcover (günstiger als Leinen) und Prägung. WatzeDruck ist ein netter Laden, engagierter Besitzer mit dem man reden kann. sedruck ist eher unpersönlich.
+Letzteres war meine gewählte Option: 26.69€ Summa sumarum pro Exemplar mit Leder Hardcover (günstiger als Leinen) und Prägung. WatzeDruck empfand ich als netten Laden mit engagiertem Besitzer, mit dem man reden kann. sedruck empfand ich als eher unpersönlich.
 
 # CD-Hülle
 Ihr habt auch keine CD-Hülle zur Hand, müsst aber eine einreichen? Hatte ich auch nicht, kann man aber simpel basteln: http://www.kotzendes-einhorn.de/blog/2012-07/cd-hullen-aus-din-a5-blattern-falten/
