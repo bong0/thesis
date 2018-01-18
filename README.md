@@ -155,6 +155,10 @@ png export online unter Export => Erweitert => Tansparent Background => Breite m
 
 Visual Paradigm für OSX/MacOS ist gut zum Zeichnen von UML Diagrammen (ERD z.B. oder Klassendiagramme).
 
+### Bäume
+
+http://campuspress.yale.edu/sabina/files/2014/12/sec-09.19-tree-drawing-and-latex-presentation-13d5vib.pdf bzw. im web archive http://web.archive.org/web/20180118112827/http://campuspress.yale.edu/sabina/files/2014/12/sec-09.19-tree-drawing-and-latex-presentation-13d5vib.pdf
+
 ## draw.io Troubleshooting
 Falls ihr abgeschnittene Cliparts oder ähnliches seht: Macht das Objekt wenige Pixel größer, dann rendert
 
